@@ -25,7 +25,7 @@ import com.cc.company.utils.*;
 public class ManageServlet extends HttpServlet {
     private static final long serialVersionUID = 3010809770452450488L;
 
-    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void doGet(HttpServletRequest request, HttpServletResponse response) {
         doPost(request, response);
     }
 
@@ -39,29 +39,13 @@ public class ManageServlet extends HttpServlet {
         }
 
         // 基本信息
-        JSONArray dicsArray = DBUtils.execute(MyProperties.get("sqlSelectDictionary"));
-        @SuppressWarnings("static-access")
-        List<Dictionary> dics = dicsArray != null ? dicsArray.parseArray(dicsArray.toJSONString(), Dictionary.class) : null;
-        SessionUtils.set(request, "dics", dics);
-        if (dics != null && dics.size() > 0) {
-            for (Dictionary d : dics) {
-                request.setAttribute(d.getTag(), d.getValue());
-            }
-        }
-        // 页面区分
-        String action = request.getParameter("action");
-        if (action == null) {
-            action = "";
-        }
+        String action = IndexServlet.loadDic(request);
 
         int userid = SessionUtils.get(request, "userid", 0);
         //判断是否登录
         if (userid > 0) {
             // 后台
             switch (action) {
-                case "index":
-                    index(request, response);
-                    break;
                 case "logout":
                     logout(request, response);
                     break;
@@ -102,7 +86,6 @@ public class ManageServlet extends HttpServlet {
     private void login(HttpServletRequest request, HttpServletResponse response) {
         try {
             response.sendRedirect("login");
-            return;
         } catch (IOException e) {
             e.printStackTrace();
         }

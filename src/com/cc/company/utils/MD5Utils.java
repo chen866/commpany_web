@@ -3,6 +3,7 @@ package com.cc.company.utils;
 import com.alibaba.fastjson.JSONArray;
 
 import java.io.UnsupportedEncodingException;
+import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Date;
@@ -50,18 +51,15 @@ public class MD5Utils {
 		if (algorithmName == null || "".equals(algorithmName.trim())) {
 			algorithmName = "md5";
 		}
-		String encryptText = null;
 		try {
 			MessageDigest m = MessageDigest.getInstance(algorithmName);
-			m.update(plaintext.getBytes("UTF8"));
-			byte s[] = m.digest();
+			m.update(plaintext.getBytes(StandardCharsets.UTF_8));
+			byte[] s = m.digest();
 			return hex(s);
 		} catch (NoSuchAlgorithmException e) {
 			e.printStackTrace();
-		} catch (UnsupportedEncodingException e) {
-			e.printStackTrace();
 		}
-		return encryptText;
+		return null;
 	}
 
 	/**
@@ -70,9 +68,9 @@ public class MD5Utils {
 	 * @return String 返回十六进制字符串
 	 */
 	private static String hex(byte[] arr) {
-		StringBuffer sb = new StringBuffer();
-		for (int i = 0; i < arr.length; ++i) {
-			sb.append(Integer.toHexString((arr[i] & 0xFF) | 0x100).substring(1, 3));
+		StringBuilder sb = new StringBuilder();
+		for (byte b : arr) {
+			sb.append(Integer.toHexString((b & 0xFF) | 0x100), 1, 3);
 		}
 		return sb.toString();
 	}

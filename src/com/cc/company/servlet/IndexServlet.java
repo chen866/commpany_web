@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.cc.company.entity.Dictionary;
 import com.cc.company.entity.Product;
@@ -34,20 +35,8 @@ public class IndexServlet extends HttpServlet {
 	public void doPost(HttpServletRequest request, HttpServletResponse response) {
 
 		// 基本信息
-		JSONArray dicsArray = DBUtils.execute(MyProperties.get("sqlSelectDictionary"));
-		@SuppressWarnings("static-access")
-		List<Dictionary> dics = dicsArray != null ? dicsArray.parseArray(dicsArray.toJSONString(), Dictionary.class) : null;
-		SessionUtils.set(request, "dics", dics);
-		if (dics != null && dics.size() > 0) {
-			for(Dictionary d : dics) {
-				request.setAttribute(d.getTag(), d.getValue());
-			}
-		}
+		String action = loadDic(request);
 
-		String action = request.getParameter("action");
-		if (action == null) {
-			action = "";
-		}
 		switch (action) {
 //			case "index":
 //				index(request, response);
@@ -69,6 +58,25 @@ public class IndexServlet extends HttpServlet {
 			break;
 		}
 	}
+
+	static String loadDic(HttpServletRequest request) {
+		JSONArray dicsArray = DBUtils.execute(MyProperties.get("sqlSelectDictionary"));
+		List<Dictionary> dics = dicsArray != null ? JSON.parseArray(dicsArray.toJSONString(), Dictionary.class) : null;
+		SessionUtils.set(request, "dics", dics);
+		if (dics != null && dics.size() > 0) {
+			for(Dictionary d : dics) {
+				request.setAttribute(d.getTag(), d.getValue());
+			}
+		}
+
+
+		String action = request.getParameter("action");
+		if (action == null) {
+			action = "";
+		}
+		return action;
+	}
+
 	private void baseMethod(HttpServletRequest request, HttpServletResponse response,int ptype,String p,String pagename) {
 		// 获取列表
 		JSONArray proArray = DBUtils.execute("select pid,pname,pdesp,pcreate from product where ptype="+ptype);

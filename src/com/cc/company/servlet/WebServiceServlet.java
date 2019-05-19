@@ -24,7 +24,7 @@ public class WebServiceServlet extends HttpServlet {
 
     private static final long serialVersionUID = -373029705505665565L;
 
-    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void doGet(HttpServletRequest request, HttpServletResponse response) {
         index(request, response);
     }
 
@@ -118,7 +118,7 @@ public class WebServiceServlet extends HttpServlet {
                         }
                         // 登录成功
                         try {
-                            response.getWriter().write(String.format("{\"state\":1,\"data\":\"success\"}"));
+                            response.getWriter().write("{\"state\":1,\"data\":\"success\"}");
                             return;
                         } catch (IOException e) {
                             e.printStackTrace();
@@ -128,14 +128,14 @@ public class WebServiceServlet extends HttpServlet {
             }
         } else {
             try {
-                response.getWriter().write(String.format("{\"state\":0,\"data\":2}"));
+                response.getWriter().write("{\"state\":0,\"data\":2}");
                 return;
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
         try {
-            response.getWriter().write(String.format("{\"state\":0,\"data\":1}"));
+            response.getWriter().write("{\"state\":0,\"data\":1}");
         } catch (IOException e) {
             e.printStackTrace();
         }

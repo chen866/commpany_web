@@ -21,8 +21,6 @@ public class DBUtils {
         try {
             PreparedStatement ps = conn.prepareStatement(sql);
             return ps.executeQuery();
-        } catch (Exception e) {
-            throw e;
         } finally {
             try {
                 conn.close();
@@ -43,8 +41,6 @@ public class DBUtils {
         try {
             PreparedStatement ps = conn.prepareStatement(sql);
             return ps.executeQuery().getMetaData();
-        } catch (Exception e) {
-            throw e;
         } finally {
             try {
                 conn.close();
@@ -96,8 +92,6 @@ public class DBUtils {
             }
             ResultSet rs = ps.executeQuery();
             return resultSetToJson(rs);
-        } catch (Exception e) {
-            throw e;
         } finally {
             try {
                 conn.close();
@@ -122,11 +116,9 @@ public class DBUtils {
                 ps.setObject((i + 1), param[i]);
             }
         }
-        int r = 0;
+        int r;
         try {
             r = ps.executeUpdate();
-        } catch (Exception e) {
-            throw e;
         } finally {
             try {
                 conn.close();
