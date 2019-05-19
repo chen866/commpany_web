@@ -1,0 +1,23 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="hello">
+    <output-path>$PROJECT_DIR$/out/artifacts/hello</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="hello/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="hello" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="module" name="activation.jar" module-name="hello" />
+          <element id="library" level="module" name="c3p0-0.9.5.4.jar" module-name="hello" />
+          <element id="library" level="module" name="fastjson-1.2.57.jar" module-name="hello" />
+          <element id="library" level="module" name="jstl.jar" module-name="hello" />
+          <element id="library" level="module" name="mail.jar" module-name="hello" />
+          <element id="library" level="module" name="mchange-commons-java-0.2.15.jar" module-name="hello" />
+          <element id="library" level="module" name="mysql-connector-java-5.1.10-bin.jar" module-name="hello" />
+          <element id="library" level="module" name="standard.jar" module-name="hello" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>

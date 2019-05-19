@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component jdk="1.8" jdk_type="JavaSDK">
+	<exclude-output/>
+	<contentEntry url="file://$MODULE_DIR$"/>
+	<lib name="activation.jar" scope="COMPILE">
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/WebContent/WEB-INF/lib/activation.jar!/"/>
+	</lib>
+	<lib name="c3p0-0.9.5.4.jar" scope="COMPILE">
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/WebContent/WEB-INF/lib/c3p0-0.9.5.4.jar!/"/>
+	</lib>
+	<lib name="fastjson-1.2.57.jar" scope="COMPILE">
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/WebContent/WEB-INF/lib/fastjson-1.2.57.jar!/"/>
+	</lib>
+	<lib name="jstl.jar" scope="COMPILE">
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/WebContent/WEB-INF/lib/jstl.jar!/"/>
+	</lib>
+	<lib name="mail.jar" scope="COMPILE">
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/WebContent/WEB-INF/lib/mail.jar!/"/>
+	</lib>
+	<lib name="mchange-commons-java-0.2.15.jar" scope="COMPILE">
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/WebContent/WEB-INF/lib/mchange-commons-java-0.2.15.jar!/"/>
+	</lib>
+	<lib name="mysql-connector-java-5.1.10-bin.jar" scope="COMPILE">
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/WebContent/WEB-INF/lib/mysql-connector-java-5.1.10-bin.jar!/"/>
+	</lib>
+	<lib name="standard.jar" scope="COMPILE">
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/WebContent/WEB-INF/lib/standard.jar!/"/>
+	</lib>
+	<levels>
+		<level name="apache-tomcat-9.0" value="project"/>
+		<level name="Java EE 6" value="project"/>
+	</levels>
+</component>
