@@ -144,8 +144,18 @@ public class IndexServlet extends HttpServlet {
 	}
 
 	private void contactus(HttpServletRequest request, HttpServletResponse response) {
+
+		JSONArray data = null;
+		try {
+			data = DBUtils.execute(MyProperties.get("sqlSelectDictionaryFromTag"), new Object[]{"contactus"});
+		} catch (Exception e) {
+			//e.printStackTrace();
+		}
+		String pdesp=JsonUtils.get(data != null ? data.getJSONObject(0) : null, "value", "");
+
 		try {
 			request.setAttribute("p", "contactus");
+			request.setAttribute("pdesp", pdesp);
 			request.getRequestDispatcher("/index/contactus.jsp").forward(request, response);
 		} catch (ServletException | IOException e) {
 			e.printStackTrace();

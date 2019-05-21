@@ -52,6 +52,9 @@ public class ManageServlet extends HttpServlet {
                 case "products":
                     products(request, response);
                     break;
+                case "contactus":
+                    contactus(request, response);
+                    break;
                 case "product":
                     product(request, response);
                     break;
@@ -327,6 +330,49 @@ public class ManageServlet extends HttpServlet {
         }
     }
 
+
+    /**
+     * 企业信息页
+     *
+     * @param request  request
+     * @param response response
+     */
+    public void contactus(HttpServletRequest request, HttpServletResponse response) {
+        // 修改基本信息
+        // 获取
+        JSONArray data = null;
+        try {
+            data = DBUtils.execute(MyProperties.get("sqlSelectDictionaryFromTag"), new Object[]{"contactus"});
+        } catch (Exception e) {
+            //e.printStackTrace();
+        }
+        String desp=JsonUtils.get(data.getJSONObject(0), "value", "");
+        String submit = request.getParameter("submit");
+        if ("1".equals(submit)) {
+            String pdesc = request.getParameter("pdesp");
+            //对比
+            if(!desp    .equals(pdesc.trim())){
+                try {
+                    DBUtils.executeSQL("update `dictionary` set `value`=? where `tag`='contactus'", new Object[]{pdesc.trim()});
+                } catch (Exception e) {
+                    //e.printStackTrace();
+                }
+            }
+            try {
+                response.sendRedirect("manage?action=contactus");
+                return;
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        request.setAttribute("p", "contactus");
+        request.setAttribute("pdesp", desp);
+        try {
+            request.getRequestDispatcher("/manage/contactus.jsp").forward(request, response);
+        } catch (ServletException | IOException e) {
+            //e.printStackTrace();
+        }
+    }
     /**
      * 解决方案列表页
      *

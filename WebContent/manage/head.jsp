@@ -58,8 +58,11 @@
 						href="${pageContext.request.contextPath}/manage?action=solutions"><i
 							class="fa fa-archive"></i><span class="nav-label">解决方案</span></a></li>
 					<li class='${p=="successs"?"active":""}'><a
-						href="${pageContext.request.contextPath}/manage?action=successs"><i
+							href="${pageContext.request.contextPath}/manage?action=successs"><i
 							class="fa fa-star"></i><span class="nav-label">成功案例</span></a></li>
+					<li class='${p=="contactus"?"active":""}'><a
+							href="${pageContext.request.contextPath}/manage?action=contactus"><i
+							class="fa fa-phone"></i><span class="nav-label">联系我们</span></a></li>
 				</ul>
 			</div>
 		</nav>

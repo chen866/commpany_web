@@ -15,7 +15,7 @@ public class JsonUtils {
 		try {
 			return jsonObject.getString(key);
 		} catch (JSONException e) {
-			e.printStackTrace();
+			//e.printStackTrace();
 			return defaultValue;
 		}
 	}
@@ -30,7 +30,7 @@ public class JsonUtils {
 		try {
 			return jsonObject.getIntValue(key);
 		} catch (JSONException e) {
-			e.printStackTrace();
+			//e.printStackTrace();
 			return defaultValue;
 		}
 	}
@@ -45,7 +45,7 @@ public class JsonUtils {
 		try {
 			return jsonObject.getDouble(key);
 		} catch (JSONException e) {
-			e.printStackTrace();
+			//e.printStackTrace();
 			return defaultValue;
 		}
 	}
