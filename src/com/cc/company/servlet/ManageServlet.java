@@ -54,6 +54,9 @@ public class ManageServlet extends HttpServlet {
                 case "banner":
                     Banner.load(request, response);
                     break;
+                case "bannerdel":
+                    Banner.del(request, response);
+                    break;
                 case "contactus":
                     Contactus.Load(request, response);
                     break;
@@ -80,13 +83,13 @@ public class ManageServlet extends HttpServlet {
                     break;
             }
         } else {
-            // 直接跳转至登录页面
+            // 重定向至登录页面
             login(request, response);
         }
     }
 
     /**
-     * 登录页面
+     * 重定向至登录页面
      *
      * @param request  request
      * @param response response
@@ -147,7 +150,7 @@ public class ManageServlet extends HttpServlet {
             }
         }
         SessionUtils.set(request, "dics", dics);
-        // 重定向至基本信息编辑页
+        // 跳转至基本信息编辑页
         try {
             request.setAttribute("p", "index");
             request.getRequestDispatcher("/manage/index.jsp").forward(request, response);
@@ -266,7 +269,7 @@ public class ManageServlet extends HttpServlet {
             }
             request.setAttribute("pros", pros);
         }
-        // 重定向至产品列表页
+        // 跳转至产品列表页
         try {
             request.setAttribute("p", action + "s");
             request.setAttribute("title", title);
@@ -322,7 +325,7 @@ public class ManageServlet extends HttpServlet {
             // System.out.println(proArray.get(0));
         }
 
-        // 重定向至产品编辑页
+        // 跳转至产品编辑页
         try {
             request.setAttribute("p", "product");
             request.setAttribute("title", mode == 0 ? "添加产品" : "编辑产品");
@@ -380,7 +383,7 @@ public class ManageServlet extends HttpServlet {
             // System.out.println(proArray.get(0));
         }
 
-        // 重定向至编辑页
+        // 跳转至编辑页
         try {
             request.setAttribute("p", "solution");
             request.setAttribute("title", mode == 0 ? "添加解决方案" : "编辑解决方案");
@@ -438,7 +441,7 @@ public class ManageServlet extends HttpServlet {
             // System.out.println(proArray.get(0));
         }
 
-        // 重定向至编辑页
+        // 跳转至编辑页
         try {
             request.setAttribute("p", "success");
             request.setAttribute("title", mode == 0 ? "添加成功案例" : "编辑成功案例");

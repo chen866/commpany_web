@@ -53,7 +53,7 @@
 							class="fa fa-file-text-o"></i><span class="nav-label">基本信息</span></a></li>
 					<li class='${p=="banner"?"active":""}'><a
 							href="${pageContext.request.contextPath}/manage?action=banner"><i
-							class="fa fa-file-image-o"></i><span class="nav-label">轮播图片</span></a></li>
+							class="fa fa-file-image-o"></i><span class="nav-label">轮播图</span></a></li>
 					<li class='${p=="products"?"active":""}'><a
 						href="${pageContext.request.contextPath}/manage?action=products"><i
 							class="fa fa-tablet"></i><span class="nav-label">产品中心</span></a></li>
@@ -88,7 +88,7 @@
 						<li class="dropdown">
 						<li><a
 							href="${pageContext.request.contextPath}/manage?action=logout">
-								<i class="fa fa-sign-out"></i> Log out
+								<i class="fa fa-sign-out"></i> 注销
 						</a></li>
 					</ul>
 

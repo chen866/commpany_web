@@ -181,26 +181,33 @@ public class IndexServlet extends HttpServlet {
         } catch (Exception e) {
             //e.printStackTrace();
         }
-        //解决方案
-        try {
-            JSONArray imagesArray = DBUtils.execute(MyProperties.get("sqlSelectFileByName"), new Object[]{"轮播图"});
-            List<String> images = new ArrayList<String>();
-            for (int i = 0; i < imagesArray.size(); i++) {
-                String path=JsonUtils.get(imagesArray.getJSONObject(i),"path","");
-                if(!path.trim().equals("")){
-                    images.add(path);
+        //产品中心
+        JSONArray proArray0 = DBUtils.execute("select pid,pname,pcontent from product where ptype=0 limit 0,4");
+
+        if ((proArray0 != null ? proArray0.size() : 0) > 0) {
+            @SuppressWarnings("static-access")
+            List<Product> pros0 = proArray0.parseArray(proArray0.toJSONString(), Product.class);
+            for (Product p : pros0) {
+                if (p.getPcontent().length() > 75) {
+                    p.setPcontent(p.getPcontent().substring(0, 60) + "...");
                 }
             }
-            if(images.size()==0){
-                images.add("/index/img/Shanghai.jpg");
-                images.add("/index/img/Newyork.jpg");
-                images.add("/index/img/Tokyo.jpg");
-                images.add("/index/img/landscape.jpg");
-            }
-            request.setAttribute("images", images);
-        } catch (Exception e) {
-            //e.printStackTrace();
+            request.setAttribute("pros0", pros0);
         }
+        //解决方案
+        JSONArray proArray1 = DBUtils.execute("select pid,pname,pcontent from product where ptype=1 limit 0,4");
+
+        if ((proArray1 != null ? proArray1.size() : 0) > 0) {
+            @SuppressWarnings("static-access")
+            List<Product> pros1 = proArray1.parseArray(proArray1.toJSONString(), Product.class);
+            for (Product p : pros1) {
+                if (p.getPcontent().length() > 75) {
+                    p.setPcontent(p.getPcontent().substring(0, 60) + "...");
+                }
+            }
+            request.setAttribute("pros1", pros1);
+        }
+
         try {
             request.setAttribute("p", "index");
             request.getRequestDispatcher("/index/index.jsp").forward(request, response);
