@@ -51,6 +51,9 @@
 					<li class='${p=="index"?"active":""}'><a
 						href="${pageContext.request.contextPath}/manage?action=index"><i
 							class="fa fa-file-text-o"></i><span class="nav-label">基本信息</span></a></li>
+					<li class='${p=="banner"?"active":""}'><a
+							href="${pageContext.request.contextPath}/manage?action=banner"><i
+							class="fa fa-file-image-o"></i><span class="nav-label">轮播图片</span></a></li>
 					<li class='${p=="products"?"active":""}'><a
 						href="${pageContext.request.contextPath}/manage?action=products"><i
 							class="fa fa-tablet"></i><span class="nav-label">产品中心</span></a></li>

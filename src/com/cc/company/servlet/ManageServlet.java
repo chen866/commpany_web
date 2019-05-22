@@ -15,6 +15,8 @@ import com.alibaba.fastjson.JSONObject;
 import com.cc.company.entity.Dictionary;
 import com.cc.company.entity.Product;
 import com.cc.company.entity.User;
+import com.cc.company.servlet.manage.Banner;
+import com.cc.company.servlet.manage.Contactus;
 import com.cc.company.utils.*;
 
 /**
@@ -49,11 +51,14 @@ public class ManageServlet extends HttpServlet {
                 case "logout":
                     logout(request, response);
                     break;
-                case "products":
-                    products(request, response);
+                case "banner":
+                    Banner.load(request, response);
                     break;
                 case "contactus":
-                    contactus(request, response);
+                    Contactus.Load(request, response);
+                    break;
+                case "products":
+                    products(request, response);
                     break;
                 case "product":
                     product(request, response);
@@ -157,7 +162,7 @@ public class ManageServlet extends HttpServlet {
      * @param request  request
      * @param response response
      * @param ptype    类型id
-     * @param action     页面
+     * @param action   页面
      * @param title    页面标题
      */
     private void baselist(HttpServletRequest request, HttpServletResponse response, int ptype, String action,
@@ -176,7 +181,7 @@ public class ManageServlet extends HttpServlet {
             JSONArray proArray = null;
             if (mode == 1) {
                 try {
-                    proArray = DBUtils.execute("select * from `product` where pid=? and ptype=?", new Object[]{id, ptype});
+                    proArray = DBUtils.execute(MyProperties.get("sqlSelectProductByType"), new Object[]{id, ptype});
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -301,7 +306,7 @@ public class ManageServlet extends HttpServlet {
         JSONArray proArray = null;
         if (mode == 1) {
             try {
-                proArray = DBUtils.execute("select * from `product` where pid=? and ptype=0", new Object[]{id});
+                proArray = DBUtils.execute(MyProperties.get("sqlSelectProductByType"), new Object[]{id, 0});
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -330,49 +335,6 @@ public class ManageServlet extends HttpServlet {
         }
     }
 
-
-    /**
-     * 企业信息页
-     *
-     * @param request  request
-     * @param response response
-     */
-    public void contactus(HttpServletRequest request, HttpServletResponse response) {
-        // 修改基本信息
-        // 获取
-        JSONArray data = null;
-        try {
-            data = DBUtils.execute(MyProperties.get("sqlSelectDictionaryFromTag"), new Object[]{"contactus"});
-        } catch (Exception e) {
-            //e.printStackTrace();
-        }
-        String desp=JsonUtils.get(data.getJSONObject(0), "value", "");
-        String submit = request.getParameter("submit");
-        if ("1".equals(submit)) {
-            String pdesc = request.getParameter("pdesp");
-            //对比
-            if(!desp    .equals(pdesc.trim())){
-                try {
-                    DBUtils.executeSQL("update `dictionary` set `value`=? where `tag`='contactus'", new Object[]{pdesc.trim()});
-                } catch (Exception e) {
-                    //e.printStackTrace();
-                }
-            }
-            try {
-                response.sendRedirect("manage?action=contactus");
-                return;
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-        request.setAttribute("p", "contactus");
-        request.setAttribute("pdesp", desp);
-        try {
-            request.getRequestDispatcher("/manage/contactus.jsp").forward(request, response);
-        } catch (ServletException | IOException e) {
-            //e.printStackTrace();
-        }
-    }
     /**
      * 解决方案列表页
      *
@@ -402,7 +364,7 @@ public class ManageServlet extends HttpServlet {
         JSONArray proArray = null;
         if (mode == 1) {
             try {
-                proArray = DBUtils.execute("select * from `product` where pid=? and ptype=1", new Object[]{id});
+                proArray = DBUtils.execute(MyProperties.get("sqlSelectProductByType"), new Object[]{id, 1});
             } catch (Exception e) {
                 e.printStackTrace();
             }

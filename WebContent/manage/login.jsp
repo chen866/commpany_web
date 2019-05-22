@@ -80,10 +80,10 @@
 
     </form>
     <div class="link"><a href="#"></a></div>
-    <div class="link marginTop">
-        <a href="${pageContext.request.contextPath}/login?action=lost"> 忘记密码 </a>
-        <a href="${pageContext.request.contextPath}/login?action=register" class="link marginTop"> 注册 </a>
-    </div>
+<%--    <div class="link marginTop">--%>
+<%--        <a href="${pageContext.request.contextPath}/login?action=lost"> 忘记密码 </a>--%>
+<%--        <a href="${pageContext.request.contextPath}/login?action=register" class="link marginTop"> 注册 </a>--%>
+<%--    </div>--%>
     <div class="link marginTop"><a href="${pageContext.request.contextPath}/index" class="link marginTop text-left">
         ←返回首页 </a></div>
     <!--  <p class="m-t"> <small>Inspinia we app framework base on Bootstrap 3 &copy; 2014</small> </p> -->

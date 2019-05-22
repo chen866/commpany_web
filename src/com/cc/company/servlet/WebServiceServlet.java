@@ -167,7 +167,7 @@ public class WebServiceServlet extends HttpServlet {
             //获取邮件模板
             JSONArray data = null;
             try {
-                data = DBUtils.execute(MyProperties.get("sqlSelectDictionaryFromTag"), new Object[]{"mailRegister2"});
+                data = DBUtils.execute(MyProperties.get("sqlSelectDictionaryByTag"), new Object[]{"mailRegister2"});
             } catch (Exception e) {
                 e.printStackTrace();
             }
