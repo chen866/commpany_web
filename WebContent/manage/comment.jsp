@@ -77,9 +77,15 @@
         var base = $("#template").clone();
         $("#template").remove();
         $.each(data.results, function (i, n) {
-            var row = base.clone();
+            let row = base.clone();
+            let parsedate = n.createdAt.getFullYear() + '-'
+                + (n.createdAt.getMonth() + 1 < 10 ? '0' + (n.createdAt.getMonth() + 1) : n.createdAt.getMonth() + 1)
+                + '-' + (n.createdAt.getDate() < 10 ? '0' + (n.createdAt.getDate()) : n.createdAt.getDate()) +
+                ' ' + (n.createdAt.getHours() < 10 ? '0' + (n.createdAt.getHours()) : n.createdAt.getHours()) +
+                ':' + (n.createdAt.getMinutes() < 10 ? '0' + (n.createdAt.getMinutes()) : n.createdAt.getMinutes());
             row.find("#pname").html(n.attributes.comment);
             row.find("#pcontent").text(n.attributes.mail);
+            row.find("#other").text(parsedate);
             row.find("#dela").click(function(){
                 del(n.id);
             });
