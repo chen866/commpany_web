@@ -63,6 +63,9 @@
 					<li class='${p=="successs"?"active":""}'><a
 							href="${pageContext.request.contextPath}/manage?action=successs"><i
 							class="fa fa-star"></i><span class="nav-label">成功案例</span></a></li>
+					<li class='${p=="comment"?"active":""}'><a
+							href="${pageContext.request.contextPath}/manage?action=comment"><i
+							class="fa fa-comment"></i><span class="nav-label">评论列表</span></a></li>
 					<li class='${p=="contactus"?"active":""}'><a
 							href="${pageContext.request.contextPath}/manage?action=contactus"><i
 							class="fa fa-phone"></i><span class="nav-label">联系我们</span></a></li>

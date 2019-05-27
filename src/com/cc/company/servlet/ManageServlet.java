@@ -78,6 +78,9 @@ public class ManageServlet extends HttpServlet {
                 case "success":
                     success(request, response);
                     break;
+                case "comment":
+                    comment(request, response);
+                    break;
                 default:
                     index(request, response);
                     break;
@@ -449,6 +452,21 @@ public class ManageServlet extends HttpServlet {
             request.setAttribute("typename", "成功案例");
             request.setAttribute("action", "manage?action=successs");
             request.getRequestDispatcher("/manage/product.jsp").forward(request, response);
+        } catch (ServletException | IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * 评论列表页
+     *
+     * @param request  request
+     * @param response response
+     */
+    public void comment(HttpServletRequest request, HttpServletResponse response) {
+        try {
+            request.setAttribute("p", "comment");
+            request.getRequestDispatcher("/manage/comment.jsp").forward(request, response);
         } catch (ServletException | IOException e) {
             e.printStackTrace();
         }
