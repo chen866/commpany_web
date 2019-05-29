@@ -11,14 +11,13 @@
 						<li><a href="${pageContext.request.contextPath}/index?action=index">首页</a></li>
 						<li><a href="${pageContext.request.contextPath}/index?action=product">产品中心</a></li>
 						<li><a href="${pageContext.request.contextPath}/index?action=solution">解决方案</a></li>
+                        <li><a href="${pageContext.request.contextPath}/index?action=contactus">产品调查</a></li>
 					</ul>
 					<ul>
 						<li><a href="${pageContext.request.contextPath}/index?action=success">成功案例</a></li>
 						<li><a href="${pageContext.request.contextPath}/index?action=contactus">联系我们</a></li>
 						<li><a href="${pageContext.request.contextPath}/index?action=contactus">投票</a></li>
-						<li><a href="${pageContext.request.contextPath}/index?action=contactus">产品调查</a></li>
 						<li><a href="${pageContext.request.contextPath}/manage?action=index">后台管理</a></li>
-						<!-- <li><a href="${pageContext.request.contextPath}/demo/index.html">后台管理</a></li>-->
 					</ul>
 					<ul>
 						<li class="footer-contact">邮箱： ${email}</li>

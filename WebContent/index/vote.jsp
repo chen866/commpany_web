@@ -82,7 +82,7 @@
 function  vote(){
 	$.ajax({
 		type:"post",
-		url:"http://47.111.168.187:8082/api/survey/list", 
+		url:"${pageContext.request.contextPath}/service?f=survey_list",
 		async:false,
 		success:function(data) {
 			if(data.code=="0"){
@@ -106,7 +106,7 @@ function  sendvote(){
 	var form ={"surveyId":id,"isAgree":agree}
 	$.ajax({
 		type:"post",
-		url:"http://47.111.168.187:8082/api/survey/submit", 
+		url:"${pageContext.request.contextPath}/service?f=survey_submit",
 		data:JSON.stringify(form),
 		dataType : "json",
 		contentType : "application/json;charset=UTF-8", //设置请求头信息{"surveyId":id,"isAgree":agree}
@@ -131,7 +131,7 @@ function  gettotal(ag){
 	var form1 ={"isAgree":ag}
 	$.ajax({
 		type:"post",
-		url:"http://47.111.168.187:8082/api/survey/total", 
+		url:"${pageContext.request.contextPath}/service?f=survey_total",
 		data:JSON.stringify(form1),
 		dataType : "json",
 		contentType : "application/json;charset=UTF-8", //设置请求头信息{"surveyId":id,"isAgree":agree}
@@ -154,7 +154,7 @@ function  gettotal2(ag){
 	var form1 ={"isAgree":ag}
 	$.ajax({
 		type:"post",
-		url:"http://47.111.168.187:8082/api/survey/total", 
+		url:"${pageContext.request.contextPath}/service?f=survey_total",
 		data:JSON.stringify(form1),
 		dataType : "json",
 		contentType : "application/json;charset=UTF-8", //设置请求头信息{"surveyId":id,"isAgree":agree}
@@ -177,7 +177,7 @@ function  gettotal3(ag){
 	var form1 ={"isAgree":ag}
 	$.ajax({
 		type:"post",
-		url:"http://47.111.168.187:8082/api/survey/total", 
+		url:"${pageContext.request.contextPath}/service?f=survey_total",
 		data:JSON.stringify(form1),
 		dataType : "json",
 		contentType : "application/json;charset=UTF-8", //设置请求头信息{"surveyId":id,"isAgree":agree}

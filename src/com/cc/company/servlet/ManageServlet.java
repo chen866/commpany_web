@@ -33,7 +33,6 @@ public class ManageServlet extends HttpServlet {
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) {
         try {
-            request.setCharacterEncoding("utf-8");
             response.setContentType("text/html;charset=UTF-8");
             request.setCharacterEncoding("utf-8");
         } catch (Exception e) {
