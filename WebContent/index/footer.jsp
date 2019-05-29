@@ -15,6 +15,8 @@
 					<ul>
 						<li><a href="${pageContext.request.contextPath}/index?action=success">成功案例</a></li>
 						<li><a href="${pageContext.request.contextPath}/index?action=contactus">联系我们</a></li>
+						<li><a href="${pageContext.request.contextPath}/index?action=contactus">投票</a></li>
+						<li><a href="${pageContext.request.contextPath}/index?action=contactus">产品调查</a></li>
 						<li><a href="${pageContext.request.contextPath}/manage?action=index">后台管理</a></li>
 						<!-- <li><a href="${pageContext.request.contextPath}/demo/index.html">后台管理</a></li>-->
 					</ul>

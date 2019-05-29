@@ -22,7 +22,7 @@ import com.cc.company.utils.SessionUtils;
 /**
  * 前台门户的Servlet
  *
- * @author chen
+ * @author
  */
 public class IndexServlet extends HttpServlet {
 
@@ -50,6 +50,9 @@ public class IndexServlet extends HttpServlet {
                 break;
             case "contactus":
                 contactus(request, response);
+                break;
+            case "vote":
+                vote(request, response);
                 break;
             default:
                 index(request, response);
@@ -158,6 +161,19 @@ public class IndexServlet extends HttpServlet {
         } catch (ServletException | IOException e) {
             e.printStackTrace();
         }
+    }
+    private void vote(HttpServletRequest request, HttpServletResponse response) {
+    	
+            try {
+				request.getRequestDispatcher("/index/vote.jsp").forward(request, response);
+			} catch (ServletException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+       
     }
 
     private void index(HttpServletRequest request, HttpServletResponse response) {

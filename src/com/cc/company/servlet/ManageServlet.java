@@ -22,7 +22,7 @@ import com.cc.company.utils.*;
 /**
  * 后台管理Servlet
  *
- * @author chen
+ * @author 
  */
 public class ManageServlet extends HttpServlet {
     private static final long serialVersionUID = 3010809770452450488L;
@@ -306,8 +306,8 @@ public class ManageServlet extends HttpServlet {
         // 通过id参数判断页面状态
         if (id != null && !id.trim().equals("")) {
             if (JsonUtils.isNumeric(id)) {
-                mode = 1;
-            }
+                mode = 1;//检测字符串是否只由数字组成
+            }//不等于null且去掉前后的空格不为空，字符串不为空的话使用自定义的方法判断是否可以转换为字符串
         }
         JSONArray proArray = null;
         if (mode == 1) {
@@ -320,7 +320,7 @@ public class ManageServlet extends HttpServlet {
                 mode = 1;
             } else {
                 mode = 0;
-            }
+            }//查询数据库 判断页面状态是编辑还是新增
         }
         // 页面逻辑
         if (mode == 1) {

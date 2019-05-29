@@ -24,7 +24,7 @@ import java.util.Random;
 /**
  * 杂项
  *
- * @author chen
+ * @author 
  */
 public class OtherServlet extends HttpServlet {
     private static final Random r = new Random();

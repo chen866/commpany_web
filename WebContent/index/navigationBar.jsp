@@ -3,23 +3,25 @@
 <!-- 移动端导航 -->
 <div class="mask"></div>
 <div class="sidebar">
-    <ul>
-        <li${p=="index"?" style=\"background-color:#930000;\"":""}>
-            <a href="${pageContext.request.contextPath}/index?action=index">首页</a>
-        </li>
-        <li${p=="product"?" style=\"background-color:#930000;\"":""}>
-            <a href="${pageContext.request.contextPath}/index?action=product">产品中心</a>
-        </li>
-        <li${p=="solution"?" style=\"background-color:#930000;\"":""}>
-            <a href="${pageContext.request.contextPath}/index?action=solution">解决方案</a>
-        </li>
-        <li${p=="success"?" style=\"background-color:#930000;\"":""}>
-            <a href="${pageContext.request.contextPath}/index?action=success">成功案例</a>
-        </li>
-        <li${p=="contactus"?" style=\"background-color:#930000;\"":""}>
-            <a href="${pageContext.request.contextPath}/index?action=contactus">联系我们</a>
-        </li>
-    </ul>
+	<ul>
+		<li ${p=="index"?" style=\"background-color:#930000;\"":""}><a
+			href="${pageContext.request.contextPath}/index?action=index">首页</a></li>
+		<li ${p=="product"?" style=\"background-color:#930000;\"":""}><a
+			href="${pageContext.request.contextPath}/index?action=product">产品中心</a>
+		</li>
+		<li ${p=="solution"?" style=\"background-color:#930000;\"":""}><a
+			href="${pageContext.request.contextPath}/index?action=solution">解决方案</a>
+		</li>
+		<li ${p=="success"?" style=\"background-color:#930000;\"":""}><a
+			href="${pageContext.request.contextPath}/index?action=success">成功案例</a>
+		</li>
+		<li ${p=="contactus"?" style=\"background-color:#930000;\"":""}>
+			<a href="${pageContext.request.contextPath}/index?action=contactus">联系我们</a>
+		</li>
+		<li ${p=="contactus"?" style=\"background-color:#930000;\"":""}>
+			<a href="${pageContext.request.contextPath}/index?action=vote">投票</a>
+		</li>
+	</ul>
 </div>
 <c:choose>
 	<c:when test='${p=="product"}'>
@@ -45,23 +47,27 @@
 			</div>
 			<!-- memu选项 -->
 			<div class="nav-mid">
-                <ul class="navbar-nav">
-                    <li>
-                        <a${p=="index"?" class=\"active\"":""} href="${pageContext.request.contextPath}/index?action=index">首页</a>
-                    </li>
-                    <li>
-                        <a${p=="product"?" class=\"active\"":""} href="${pageContext.request.contextPath}/index?action=product">产品中心</a>
-                    </li>
-                    <li>
-                        <a${p=="solution"?" class=\"active\"":""} href="${pageContext.request.contextPath}/index?action=solution">解决方案</a>
-                    </li>
-                    <li>
-                        <a${p=="success"?" class=\"active\"":""} href="${pageContext.request.contextPath}/index?action=success">成功案例</a>
-                    </li>
-                    <li>
-                        <a${p=="contactus"?" class=\"active\"":""} href="${pageContext.request.contextPath}/index?action=contactus">联系我们</a>
-                    </li>
-                </ul>
+				<ul class="navbar-nav">
+					<li><a ${p=="index"?" class=\"active\"":""}
+						href="${pageContext.request.contextPath}/index?action=index">首页</a>
+					</li>
+					<li><a ${p=="product"?" class=\"active\"":""}
+						href="${pageContext.request.contextPath}/index?action=product">产品中心</a>
+					</li>
+					<li><a ${p=="solution"?" class=\"active\"":""}
+						href="${pageContext.request.contextPath}/index?action=solution">解决方案</a>
+					</li>
+					<li><a ${p=="success"?" class=\"active\"":""}
+						href="${pageContext.request.contextPath}/index?action=success">成功案例</a>
+					</li>
+					<li><a ${p=="contactus"?" class=\"active\"":""}
+						href="${pageContext.request.contextPath}/index?action=contactus">联系我们</a>
+					</li>
+					<li>
+						<a ${p=="vote"?" class=\"active\"":""}
+						href="${pageContext.request.contextPath}/index?action=vote">投票</a>
+					</li>
+				</ul>
 			</div>
 			<!-- 响应式菜单 -->
 			<div class="nav-mobile-menu">

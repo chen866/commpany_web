@@ -12,7 +12,7 @@ import java.util.Properties;
 /**
  * 关于Properties类常用的操作
  * 
- * @author chen
+ * @author
  *
  */
 public class MyProperties {

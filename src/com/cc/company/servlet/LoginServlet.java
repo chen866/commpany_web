@@ -15,7 +15,7 @@ import java.io.IOException;
 /**
  * 登录相关Servlet
  *
- * @author chen
+ * @author 
  */
 public class LoginServlet extends HttpServlet {
 
@@ -141,29 +141,26 @@ public class LoginServlet extends HttpServlet {
      * @param request  request
      * @param response response
      */
-    private void register(HttpServletRequest request, HttpServletResponse response) {
-        request.setAttribute("p", "register");
-
-        String submit = request.getParameter("submit");
-        if ("1".equals(submit)) {
-            //注册逻辑
-            //验证码
-            String vcodetext = SessionUtils.get(request, "vcodetext", "");
-            String vcode = request.getParameter("vcode");
-            if (vcode != null && vcodetext != null && vcodetext.toUpperCase().equals(vcode.toUpperCase())) {
-                //发送邮件
-
-            }
-        }
-        try {
-            String uname = request.getParameter("uname");
-            String email = request.getParameter("email");
-            request.setAttribute("uname", uname);
-            request.getRequestDispatcher("/manage/register.jsp").forward(request, response);
-        } catch (ServletException | IOException e) {
-            e.printStackTrace();
-        }
-    }
+	
+	  private void register(HttpServletRequest request, HttpServletResponse
+	  response) { request.setAttribute("p", "register");
+	  
+	  String submit = request.getParameter("submit"); 
+	  if ("1".equals(submit)) {
+	  //注册逻辑 
+		  //验证码 
+		  String vcodetext = SessionUtils.get(request, "vcodetext", "");
+	  String vcode = request.getParameter("vcode"); if (vcode != null && vcodetext
+	  != null && vcodetext.toUpperCase().equals(vcode.toUpperCase())) { //发送邮件
+	  
+	  } 
+	  }
+	  try { String uname = request.getParameter("uname"); String email =
+	  request.getParameter("email"); request.setAttribute("uname", uname);
+	  request.getRequestDispatcher("/manage/register.jsp").forward(request,
+	  response); } catch (ServletException | IOException e) { e.printStackTrace();
+	  } }
+	 
 
     /**
      * 找回密码
@@ -171,14 +168,11 @@ public class LoginServlet extends HttpServlet {
      * @param request  request
      * @param response response
      */
-    private void lost(HttpServletRequest request, HttpServletResponse response) {
-        request.setAttribute("p", "lost");
-        try {
-            String uname = request.getParameter("uname");
-            request.setAttribute("uname", uname);
-            request.getRequestDispatcher("/manage/lost.jsp").forward(request, response);
-        } catch (ServletException | IOException e) {
-            e.printStackTrace();
-        }
-    }
+	
+	  private void lost(HttpServletRequest request, HttpServletResponse response) {
+	  request.setAttribute("p", "lost"); try { String uname =
+	  request.getParameter("uname"); request.setAttribute("uname", uname);
+	  request.getRequestDispatcher("/manage/lost.jsp").forward(request, response);
+	 } catch (ServletException | IOException e) { e.printStackTrace(); } }
+	 
 }
