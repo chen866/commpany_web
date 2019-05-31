@@ -61,8 +61,9 @@
 <!--Leancloud 操作库:-->
 <script src="${pageContext.request.contextPath}/index/js/av-min.js"></script>
 <script>
+    //删除方法定义
     function del(id){
-        // 执行 CQL 语句实现删除一个 Todo 对象
+        // 执行 CQL 语句实现删除一个评论对象
         AV.Query.doCloudQuery('delete from Comment where objectId="'+id+'"').then(function () {
             // 删除成功
             window.location.href='manage?action=comment';
@@ -70,26 +71,38 @@
             // 异常处理
         });
     }
+    //初始化环境
     AV.init("k8LPqtENcTxnGhjVsqPtM5Bi-gzGzoHsz", "3Lg3WmfcovFDeo6HYcUtqqBF");
+    //查询语句
     var cql = 'select * from Comment';
+    //查询操作
     AV.Query.doCloudQuery(cql).then(function (data) {
-        // results 即为查询结果，它是一个 AV.Object 数组
+        //then 执行后的回调函数
+
+        //复制 jquery筛选出来的id为template的html对象，复制并赋给base变量
         var base = $("#template").clone();
+        //移除 jquery筛选出来的id为template的html对象
         $("#template").remove();
+        // results 即为查询结果，它是一个 AV.Object 数组
         $.each(data.results, function (i, n) {
+            //复制base变量，赋值给row变量
             let row = base.clone();
+            //格式化时间对象，赋值给parsedate
             let parsedate = n.createdAt.getFullYear() + '-'
                 + (n.createdAt.getMonth() + 1 < 10 ? '0' + (n.createdAt.getMonth() + 1) : n.createdAt.getMonth() + 1)
                 + '-' + (n.createdAt.getDate() < 10 ? '0' + (n.createdAt.getDate()) : n.createdAt.getDate()) +
                 ' ' + (n.createdAt.getHours() < 10 ? '0' + (n.createdAt.getHours()) : n.createdAt.getHours()) +
                 ':' + (n.createdAt.getMinutes() < 10 ? '0' + (n.createdAt.getMinutes()) : n.createdAt.getMinutes());
+            //将data.results的子项n的attributes属性中的comment属性添加到   在row变量中找到id为pname的html对象的开始和结束标签之间的 HTML
             row.find("#pname").html(n.attributes.comment);
+            //将data.results的子项n的attributes属性中的mail属性添加到   在row变量中找到id为pcontent的html对象的开始和结束标签之间的 文本
             row.find("#pcontent").text(n.attributes.mail);
             row.find("#other").text(parsedate);
             row.find("#dela").click(function(){
                 del(n.id);
             });
-            row.appendTo("#datas");//添加到模板的容器中
+            //将row对象添加到 id为datas的html子项中
+            row.appendTo("#datas");
         });
     }, function (error) {
     });
